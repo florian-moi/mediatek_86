@@ -43,12 +43,13 @@ namespace mediatek86.View
             // 
             // panelHeader
             // 
-            this.panelHeader.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelHeader.BackColor = System.Drawing.Color.ForestGreen;
+            this.panelHeader.Controls.Add(this.labelTitle);
             this.panelHeader.Controls.Add(this.labelHeader);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(800, 150);
+            this.panelHeader.Size = new System.Drawing.Size(800, 151);
             this.panelHeader.TabIndex = 0;
             // 
             // labelHeader
@@ -68,7 +69,6 @@ namespace mediatek86.View
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelContent.BackColor = System.Drawing.Color.White;
-            this.panelContent.Controls.Add(this.labelTitle);
             this.panelContent.Controls.Add(this.labelList);
             this.panelContent.Controls.Add(this.comboBoxPersonnel);
             this.panelContent.Controls.Add(this.buttonAdd);
@@ -79,12 +79,13 @@ namespace mediatek86.View
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(800, 350);
             this.panelContent.TabIndex = 1;
+            this.panelContent.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContent_Paint);
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 24F);
-            this.labelTitle.Location = new System.Drawing.Point(238, 18);
+            this.labelTitle.Location = new System.Drawing.Point(267, 41);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(282, 45);
             this.labelTitle.TabIndex = 0;
@@ -94,7 +95,7 @@ namespace mediatek86.View
             // 
             this.labelList.AutoSize = true;
             this.labelList.Font = new System.Drawing.Font("Segoe UI", 16F);
-            this.labelList.Location = new System.Drawing.Point(281, 77);
+            this.labelList.Location = new System.Drawing.Point(270, 48);
             this.labelList.Name = "labelList";
             this.labelList.Size = new System.Drawing.Size(189, 30);
             this.labelList.TabIndex = 1;
@@ -103,9 +104,7 @@ namespace mediatek86.View
             // comboBoxPersonnel
             // 
             this.comboBoxPersonnel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.comboBoxPersonnel.Items.AddRange(new object[] {
-            "Jean Michel MICHEL"});
-            this.comboBoxPersonnel.Location = new System.Drawing.Point(275, 127);
+            this.comboBoxPersonnel.Location = new System.Drawing.Point(264, 98);
             this.comboBoxPersonnel.Name = "comboBoxPersonnel";
             this.comboBoxPersonnel.Size = new System.Drawing.Size(220, 25);
             this.comboBoxPersonnel.TabIndex = 2;
@@ -113,35 +112,39 @@ namespace mediatek86.View
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(204, 170);
+            this.buttonAdd.Location = new System.Drawing.Point(193, 141);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(150, 30);
             this.buttonAdd.TabIndex = 3;
             this.buttonAdd.Text = "Ajouter une personne";
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(204, 220);
+            this.buttonDelete.Location = new System.Drawing.Point(193, 191);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(150, 30);
             this.buttonDelete.TabIndex = 4;
             this.buttonDelete.Text = "Supprimer la personne";
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(404, 220);
+            this.buttonEdit.Location = new System.Drawing.Point(393, 191);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(150, 30);
             this.buttonEdit.TabIndex = 5;
             this.buttonEdit.Text = "Modifier personne";
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonAbsences
             // 
-            this.buttonAbsences.Location = new System.Drawing.Point(404, 170);
+            this.buttonAbsences.Location = new System.Drawing.Point(393, 141);
             this.buttonAbsences.Name = "buttonAbsences";
             this.buttonAbsences.Size = new System.Drawing.Size(150, 30);
             this.buttonAbsences.TabIndex = 6;
-            this.buttonAbsences.Text = "Gérer ses absences";
+            this.buttonAbsences.Text = "Gérer les absences";
+            this.buttonAbsences.Click += new System.EventHandler(this.buttonAbsences_Click);
             // 
             // GererPersonnel
             // 
@@ -152,6 +155,7 @@ namespace mediatek86.View
             this.Controls.Add(this.panelContent);
             this.Name = "GererPersonnel";
             this.Text = "Gérer le personnel";
+            this.Load += new System.EventHandler(this.GererPersonnel_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelContent.ResumeLayout(false);
